@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.3 (2023-04-01)
+### Fix
+* Fmt ([`6062602`](https://github.com/tjtharrison/gpush/commit/606260259144e8d6d519f8a8cf8d4f4fde108831))
+* Fix repo selection ([`f00312e`](https://github.com/tjtharrison/gpush/commit/f00312e84eeffaca416f2d3a65e11910791e30f9))
+
 ## v1.0.2 (2023-04-01)
 ### Fix
 * Fixed CI for pypi ([`8d176bb`](https://github.com/tjtharrison/gpush/commit/8d176bbb131b3015da83c42cd6f45956151b4d6f))
