@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.4 (2023-04-01)
+### Fix
+* Removed unused imports ([`87dbac7`](https://github.com/tjtharrison/gpush/commit/87dbac7069dd2fb4e74999b006fc6a49200c1369))
+
+### Documentation
+* Updated pyproject for pypi ([`edf5f43`](https://github.com/tjtharrison/gpush/commit/edf5f437864f50d6c032190db5c005ed442900a7))
+
 ## v1.0.3 (2023-04-01)
 ### Fix
 * Fmt ([`6062602`](https://github.com/tjtharrison/gpush/commit/606260259144e8d6d519f8a8cf8d4f4fde108831))
