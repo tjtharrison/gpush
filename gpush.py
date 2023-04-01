@@ -21,10 +21,10 @@ def git_push(commit_message):
         repo = Repo(sys.argv[1])
         repo.git.add(update=True)
         repo.index.commit(commit_message)
-        repo.git.push('--set-upstream', 'origin', repo.active_branch)
+        repo.git.push("--set-upstream", "origin", repo.active_branch)
         print("Pushed successfully")
     except Exception as error_message:
-        print('Some error occured while pushing the code:')
+        print("Some error occured while pushing the code:")
         print(str(error_message))
 
 
@@ -44,9 +44,9 @@ def collect_details():
         inquirer.List(
             "breaking_change",
             message="Does the commit include breaking changes?",
-            choices=["Yes","No"],
+            choices=["Yes", "No"],
         ),
-        inquirer.Text('commit_message', message="What's your commit message"),
+        inquirer.Text("commit_message", message="What's your commit message"),
     ]
 
     answers = inquirer.prompt(questions)
@@ -55,7 +55,9 @@ def collect_details():
     else:
         is_breaking_change = ""
 
-    commit_message = answers["type"] + is_breaking_change + ": " + answers["commit_message"]
+    commit_message = (
+        answers["type"] + is_breaking_change + ": " + answers["commit_message"]
+    )
 
     git_push(commit_message)
 
