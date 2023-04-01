@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.2 (2023-04-01)
+### Fix
+* Fixed CI for pypi ([`8d176bb`](https://github.com/tjtharrison/gpush/commit/8d176bbb131b3015da83c42cd6f45956151b4d6f))
+
 ## v1.0.1 (2023-04-01)
 ### Fix
 * Fixed linting ([`9ce50c1`](https://github.com/tjtharrison/gpush/commit/9ce50c19a2f61e7a144fc8c654a66c24d937b2a0))
