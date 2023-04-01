@@ -5,10 +5,9 @@ messages.
 Usage: gpush
 """
 import sys
-
+import os
 import inquirer
 from git import Repo
-
 
 def git_push(commit_message):
     """
@@ -18,10 +17,10 @@ def git_push(commit_message):
     :return: True/False
     """
     try:
-        repo = Repo(sys.argv[1])
-        repo.git.add(update=True)
+        repo = Repo(search_parent_directories=True)
         repo.index.commit(commit_message)
         repo.git.push("--set-upstream", "origin", repo.active_branch)
+        print("pushing commit: " + commit_message)
         print("Pushed successfully")
     except Exception as error_message:
         print("Some error occured while pushing the code:")
@@ -58,7 +57,6 @@ def collect_details():
     commit_message = (
         answers["type"] + is_breaking_change + ": " + answers["commit_message"]
     )
-
     git_push(commit_message)
 
 
