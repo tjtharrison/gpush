@@ -4,10 +4,12 @@ messages.
 
 Usage: gpush
 """
-import sys
 import os
+import sys
+
 import inquirer
 from git import Repo
+
 
 def git_push(commit_message):
     """
