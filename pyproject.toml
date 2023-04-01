@@ -1,3 +1,7 @@
 [tool.semantic_release]
 version_variable = "setup.py:__version__"
 branch = "main"
+description = "Git commit helper for conventional commit messages"
+readme = "README.md"
+name = "gpush"
+keywords = ["python", "git", "commit"]
