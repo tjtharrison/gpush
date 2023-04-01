@@ -4,9 +4,11 @@ messages.
 
 Usage: gpush
 """
-from git import Repo
-import inquirer
 import sys
+
+import inquirer
+from git import Repo
+
 
 def git_push(commit_message):
     """
@@ -57,4 +59,6 @@ def collect_details():
 
     git_push(commit_message)
 
-collect_details()
+
+if __name__ == "__main__":
+    collect_details()
