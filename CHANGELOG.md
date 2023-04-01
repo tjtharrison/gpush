@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.1 (2023-04-01)
+### Fix
+* Fixed linting ([`9ce50c1`](https://github.com/tjtharrison/gpush/commit/9ce50c19a2f61e7a144fc8c654a66c24d937b2a0))
+
 ## v1.0.0 (2023-04-01)
 ### Feature
 * Included python script ([`0ef0e48`](https://github.com/tjtharrison/gpush/commit/0ef0e485c2968b16d9e7bfd9736ac119da1b89f0))
