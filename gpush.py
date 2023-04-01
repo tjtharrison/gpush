@@ -4,8 +4,6 @@ messages.
 
 Usage: gpush
 """
-import os
-import sys
 
 import inquirer
 from git import Repo
