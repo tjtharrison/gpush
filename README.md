@@ -1,6 +1,6 @@
 # gpush
 
-Script for standardising commit messages on git push using "Conventional commit" format
+Script for standardising commit messages on git push using "Conventional commit" format. The package handles GPG signing for commits out of the box (using your local git configuration)
 
 https://www.conventionalcommits.org/en/v1.0.0/
 
