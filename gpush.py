@@ -19,7 +19,7 @@ def git_push(commit_message):
     try:
         repo = Repo(search_parent_directories=True)
         repo.index.write()
-        repo.git.commit("-m \"" + commit_message + "\"")
+        repo.git.commit('-m "' + commit_message + '"')
         repo.git.push("--set-upstream", "origin", repo.active_branch)
         print("pushing commit: " + commit_message)
         print("Pushed successfully")
