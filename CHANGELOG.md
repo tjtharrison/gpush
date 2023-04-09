@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.0 (2023-04-09)
+### Feature
+* GPG commits working ([`d0565a8`](https://github.com/tjtharrison/gpush/commit/d0565a8eaab7147d933e7d4dc55d0477b39e2695))
+
+### Fix
+* Fixed commit message ([`35346e5`](https://github.com/tjtharrison/gpush/commit/35346e5fe30dc27b8bddab382a30e1113b9419b0))
+
+### Documentation
+* Test ([`d9dd34d`](https://github.com/tjtharrison/gpush/commit/d9dd34d4f5a48609a8aac8cca529e3c40bbc3f5a))
+
 ## v1.0.4 (2023-04-01)
 ### Fix
 * Removed unused imports ([`87dbac7`](https://github.com/tjtharrison/gpush/commit/87dbac7069dd2fb4e74999b006fc6a49200c1369))
