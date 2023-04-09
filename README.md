@@ -1,8 +1,6 @@
 # gpush
 
-Script for standardising commit messages on git push using "Conventional commit" format. The package handles GPG signing for commits out of the box (using your local git configuration)
-
-https://www.conventionalcommits.org/en/v1.0.0/
+`gpush` is a command line utility for standardising commit messages using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 # Installation
 
@@ -25,3 +23,13 @@ To start using straight away, source your file
 ```
 source ~/.zshrc
 ```
+
+# Usage
+
+When running gpush in a git directory, use `gpush` to replace your standard `git commit && git push` commands. `gpush` will ask three questions to determine detail about your commit and generate a conventionally formatted git commit message.
+
+!["gpush_demo"](docs/gpush_demo.gif)
+
+# python-semantic-release
+
+`gpush` generates commit messages that are compliant with [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/). See example in the [GitHub Repository](https://github.com/tjtharrison/gpush/blob/main/.github/workflows/semver.yaml)
