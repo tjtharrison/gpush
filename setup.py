@@ -6,7 +6,7 @@ from setuptools import setup
 with open("README.md", encoding="UTF-8") as readme_file:
     readme_contents = readme_file.read()
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 setup(
     name="gpush",

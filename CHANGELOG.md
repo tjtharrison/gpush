@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.1 (2023-04-09)
+### Fix
+* Fixed documentation link to PyPi ([`6f1862b`](https://github.com/tjtharrison/gpush/commit/6f1862bb24b38f6f96f1092f6bae3d81284539e5))
+
 ## v1.1.0 (2023-04-09)
 ### Feature
 * GPG commits working ([`d0565a8`](https://github.com/tjtharrison/gpush/commit/d0565a8eaab7147d933e7d4dc55d0477b39e2695))
