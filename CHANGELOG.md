@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.0 (2023-04-10)
+### Feature
+* Updated build setup to make executable with dependencies ([`6f56d79`](https://github.com/tjtharrison/gpush/commit/6f56d792379007f2e6bd40054633b4fc3ab99ac5))
+
+### Breaking
+* Updated build setup to make executable with dependencies ([`6f56d79`](https://github.com/tjtharrison/gpush/commit/6f56d792379007f2e6bd40054633b4fc3ab99ac5))
+
 ## v1.1.1 (2023-04-09)
 ### Fix
 * Fixed documentation link to PyPi ([`6f1862b`](https://github.com/tjtharrison/gpush/commit/6f1862bb24b38f6f96f1092f6bae3d81284539e5))

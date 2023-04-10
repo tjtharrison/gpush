@@ -9,7 +9,7 @@ with open("README.md", encoding="UTF-8") as readme_file:
 with open("requirements.txt", encoding="UTF-8") as requirements_file:
     required = requirements_file.read().splitlines()
 
-__version__ = "1.1.1"
+__version__ = "2.0.0"
 
 setup(
     name="gpush",
