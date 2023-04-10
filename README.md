@@ -10,25 +10,26 @@ This package is available for installation via pypi
 pip3 install gpush
 ```
 
-# Configuration
-
-To start using gpush, run the following (update as required if you do not use zsh)
-
-```
-echo "alias gpush=\"python3 -m gpush\"" >> ~/.zshrc
-```
-
-To start using straight away, source your file
-
-```
-source ~/.zshrc
-```
-
 # Usage
 
 When running gpush in a git directory, use `gpush` to replace your standard `git commit && git push` commands. `gpush` will ask three questions to determine detail about your commit and generate a conventionally formatted git commit message.
 
 !["gpush_demo"](docs/gpush_demo.gif)
+
+# Local development
+
+To develop locally, execute the pip3 installation in the local directory:
+
+```
+pip3 install .
+```
+
+Alternatively, create an alias in your zshrc file (Use appropriate profile file if you do not use zsh)
+
+echo "alias gpush=\"python3 /path/to/git/gpush/gpush\"" >> ~/.zshrc
+To start using straight away, source your file
+
+source ~/.zshrc
 
 # python-semantic-release
 
