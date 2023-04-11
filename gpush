@@ -6,10 +6,33 @@ messages.
 
 Usage: gpush
 """
+import sys
 
 import inquirer
 from git import Repo
+import argparse
 
+found_version = False
+with open("setup.py", encoding="UTF-8") as setup_file:
+    for line in setup_file:
+        if line.startswith("__version__"):
+            version = line.split("=")[1].replace("\"","").strip()
+            found_version = True
+
+if not found_version:
+    print("__version__ not detected in setup.py")
+    sys.exit(1)
+
+parser = argparse.ArgumentParser(
+    prog="gpush " + version,
+    description="Git commit helper for conventional commit messages",
+)
+parser.add_argument(
+    '--version',
+    action='store_true',
+    help="Option to print the current version only"
+)
+args = parser.parse_args()
 
 def git_push(commit_message):
     """
@@ -64,4 +87,7 @@ def collect_details():
 
 
 if __name__ == "__main__":
-    collect_details()
+    if args.version:
+        print("Current version: " + version)
+    else:
+        collect_details()
