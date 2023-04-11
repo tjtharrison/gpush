@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.0 (2023-04-11)
+### Feature
+* Added version flag ([`87183b8`](https://github.com/tjtharrison/gpush/commit/87183b8f532377255e7742260ef8c6243c921d2a))
+
 ## v2.0.0 (2023-04-10)
 ### Feature
 * Updated build setup to make executable with dependencies ([`6f56d79`](https://github.com/tjtharrison/gpush/commit/6f56d792379007f2e6bd40054633b4fc3ab99ac5))
