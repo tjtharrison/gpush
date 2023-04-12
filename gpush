@@ -6,9 +6,6 @@ messages.
 
 Usage: gpush
 """
-import sys
-
-import os
 
 import inquirer
 from git import Repo
@@ -22,21 +19,19 @@ parser = argparse.ArgumentParser(
     description="Git commit helper for conventional commit messages",
 )
 parser.add_argument(
-    '--version',
-    action='store_true',
-    help="Option to print the current version only"
+    "--version", action="store_true", help="Option to print the current version only"
 )
 parser.add_argument(
-    '--commit',
-    action='store_true',
+    "--commit",
+    action="store_true",
     default=True,
-    help="[Default: True] Option to enable git commit"
+    help="[Default: True] Option to enable git commit",
 )
 parser.add_argument(
-    '--push',
-    action='store_true',
+    "--push",
+    action="store_true",
     default=True,
-    help="[Default: True] Option to enable git push"
+    help="[Default: True] Option to enable git push",
 )
 
 args = parser.parse_args()
@@ -62,6 +57,7 @@ def git_commit(commit_message):
 
     return True
 
+
 def git_push():
     """
     Function to push commit up to Git on the current branch for the repository
@@ -78,6 +74,7 @@ def git_push():
         raise
 
     return True
+
 
 def collect_details():
     """
@@ -107,7 +104,7 @@ def collect_details():
         is_breaking_change = ""
 
     commit_message_final = (
-            answers["type"] + is_breaking_change + ": " + answers["commit_message"]
+        answers["type"] + is_breaking_change + ": " + answers["commit_message"]
     )
     return commit_message_final
 
