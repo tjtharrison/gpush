@@ -6,37 +6,38 @@ messages.
 
 Usage: gpush
 """
-import sys
 
 import inquirer
 from git import Repo
 import argparse
+from _version import __version__
 
-found_version = False
-with open("setup.py", encoding="UTF-8") as setup_file:
-    for line in setup_file:
-        if line.startswith("__version__"):
-            version = line.split("=")[1].replace("\"","").strip()
-            found_version = True
-
-if not found_version:
-    print("__version__ not detected in setup.py")
-    sys.exit(1)
+version = __version__
 
 parser = argparse.ArgumentParser(
     prog="gpush " + version,
     description="Git commit helper for conventional commit messages",
 )
 parser.add_argument(
-    '--version',
-    action='store_true',
-    help="Option to print the current version only"
+    "--version", action="store_true", help="Option to print the current version only"
 )
+parser.add_argument(
+    "--no-commit",
+    action="store_false",
+    help="[Default: False] Option to enable git commit",
+)
+parser.add_argument(
+    "--no-push",
+    action="store_false",
+    help="[Default: False] Option to enable git push",
+)
+
 args = parser.parse_args()
 
-def git_push(commit_message):
+
+def git_commit(commit_message):
     """
-    Function to push commit up to Git on the current branch for the repository
+    Function to commit changes to Git on the current branch for the repository
     :param commit_message: String containing the conventional commit message formatted commit
     message
     :return: True/False
@@ -45,12 +46,32 @@ def git_push(commit_message):
         repo = Repo(search_parent_directories=True)
         repo.index.write()
         repo.git.commit("-m" + commit_message)
+        print("committing: " + commit_message)
+        print("Committed successfully")
+    except Exception as error_message:
+        print("Some error occured while committing the code:")
+        print(str(error_message))
+        raise
+
+    return True
+
+
+def git_push():
+    """
+    Function to push commit up to Git on the current branch for the repository
+
+    :return: True/False
+    """
+    try:
+        repo = Repo(search_parent_directories=True)
         repo.git.push("--set-upstream", "origin", repo.active_branch)
-        print("pushing commit: " + commit_message)
         print("Pushed successfully")
     except Exception as error_message:
-        print("Some error occured while pushing the code:")
+        print("Some error occurred while pushing the code:")
         print(str(error_message))
+        raise
+
+    return True
 
 
 def collect_details():
@@ -80,14 +101,22 @@ def collect_details():
     else:
         is_breaking_change = ""
 
-    commit_message = (
+    commit_message_final = (
         answers["type"] + is_breaking_change + ": " + answers["commit_message"]
     )
-    git_push(commit_message)
+    return commit_message_final
 
 
 if __name__ == "__main__":
     if args.version:
-        print("Current version: " + version)
+        print(version)
     else:
-        collect_details()
+        try:
+            if args.no_commit:
+                commit_message = collect_details()
+                git_commit(commit_message)
+            if args.no_push:
+                git_push()
+        except Exception as error_message:
+            print("Some error occurred while pushing the code:")
+            print(str(error_message))
