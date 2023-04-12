@@ -22,16 +22,14 @@ parser.add_argument(
     "--version", action="store_true", help="Option to print the current version only"
 )
 parser.add_argument(
-    "--commit",
-    action="store_true",
-    default=True,
-    help="[Default: True] Option to enable git commit",
+    "--no-commit",
+    action="store_false",
+    help="[Default: False] Option to enable git commit",
 )
 parser.add_argument(
-    "--push",
-    action="store_true",
-    default=True,
-    help="[Default: True] Option to enable git push",
+    "--no-push",
+    action="store_false",
+    help="[Default: False] Option to enable git push",
 )
 
 args = parser.parse_args()
@@ -113,11 +111,11 @@ if __name__ == "__main__":
     if args.version:
         print(version)
     else:
-        commit_message = collect_details()
         try:
-            if args.commit:
+            if args.no_commit:
+                commit_message = collect_details()
                 git_commit(commit_message)
-            if args.push:
+            if args.no_push:
                 git_push()
         except Exception as error_message:
             print("Some error occurred while pushing the code:")
