@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.1 (2023-04-12)
+### Fix
+* Fixed no-commit,no-push ([`e42d17b`](https://github.com/tjtharrison/gpush/commit/e42d17b3a645d43a579c86049b6b31529385d90c))
+* Removed unused imports ([`461ed99`](https://github.com/tjtharrison/gpush/commit/461ed995c5e1cdbebaef7649e1938c4a2844cb48))
+* Fixed git_push ([`bf318f2`](https://github.com/tjtharrison/gpush/commit/bf318f2b2ec6eef77f7170474f2f46b633aa7f33))
+* Fixed version reference in pip install ([`234641c`](https://github.com/tjtharrison/gpush/commit/234641c5dd3dc29ca1191d91cc58a6ae78b9cae5))
+
 ## v2.1.0 (2023-04-11)
 ### Feature
 * Added version flag ([`87183b8`](https://github.com/tjtharrison/gpush/commit/87183b8f532377255e7742260ef8c6243c921d2a))
