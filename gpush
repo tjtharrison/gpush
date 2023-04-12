@@ -121,7 +121,7 @@ if __name__ == "__main__":
             if args.commit:
                 git_commit(commit_message)
             if args.push:
-                git_push(commit_message)
+                git_push()
         except Exception as error_message:
             print("Some error occurred while pushing the code:")
             print(str(error_message))
