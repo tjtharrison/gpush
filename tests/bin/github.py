@@ -75,19 +75,15 @@ def clone_repo():
 
     return True
 
-if __name__ == "__main__":
-    try:
-        create_repo()
-        print("Repo created successfully")
-    except Exception as error_message:
-        print("Some error occurred while creating the repo:")
-        print(str(error_message))
-        raise
-
-    try:
-        delete_repo()
-        print("Repo deleted successfully")
-    except Exception as error_message:
-        print("Some error occurred while deleting the repo:")
-        print(str(error_message))
-        raise
+# Function to get the last commit from the github api
+def get_last_commit_message(branch_name):
+    """Get the last commit from the github api.
+    :param branch_name: The name of the branch to get the last commit from.
+    :return: The last commit message.
+    """
+    last_commit = api.repos.get_commit(
+        repo=test_repo_name,
+        owner=get_user().login,
+        ref=branch_name,
+    )
+    return last_commit["commit"]["message"]
