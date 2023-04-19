@@ -7,11 +7,13 @@ messages.
 Usage: gpush.py
 """
 
+import argparse
+import sys
+
 import inquirer
 from git import Repo
-import argparse
+
 from _version import __version__
-import sys
 
 version = __version__
 
@@ -39,6 +41,7 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
+
 
 def get_version():
     """
@@ -119,6 +122,7 @@ def collect_details():
         answers["type"] + is_breaking_change + ": " + answers["commit_message"]
     )
     return commit_message_final
+
 
 def main():
     """
