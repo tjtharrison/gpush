@@ -16,7 +16,7 @@ import sys
 version = __version__
 
 parser = argparse.ArgumentParser(
-    prog="gpush.py " + version,
+    prog="gpush " + version,
     description="Git commit helper for conventional commit messages",
 )
 parser.add_argument(
