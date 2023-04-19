@@ -4,12 +4,15 @@
 Python script to handle git commit and push to standardise commit messages using conventional commit
 messages.
 
-Usage: gpush
+Usage: gpush.py
 """
+
+import argparse
+import sys
 
 import inquirer
 from git import Repo
-import argparse
+
 from _version import __version__
 
 version = __version__
@@ -31,8 +34,22 @@ parser.add_argument(
     action="store_false",
     help="[Default: False] Option to enable git push",
 )
+parser.add_argument(
+    "--message",
+    action="store",
+    help="[Default: None] Override message prompt and use the provided message",
+)
 
 args = parser.parse_args()
+
+
+def get_version():
+    """
+    Function to return the current version of gpush.py
+
+    :return: String containing the current version of gpush.py
+    """
+    return version
 
 
 def git_commit(commit_message):
@@ -107,16 +124,33 @@ def collect_details():
     return commit_message_final
 
 
-if __name__ == "__main__":
+def main():
+    """
+    Main function to execute the script
+    :return:
+    """
     if args.version:
-        print(version)
+        print(get_version())
     else:
         try:
             if args.no_commit:
-                commit_message = collect_details()
+                print(args.message)
+                if str(args.message) != "None":
+                    commit_message = args.message
+                else:
+                    print("Got here")
+                    commit_message = collect_details()
                 git_commit(commit_message)
             if args.no_push:
                 git_push()
         except Exception as error_message:
             print("Some error occurred while pushing the code:")
             print(str(error_message))
+            raise
+    return True
+
+
+if __name__ == "__main__":
+    """
+    Main function to execute the script"""
+    main()

@@ -31,6 +31,18 @@ To start using straight away, source your file
 
 source ~/.zshrc
 
+# Unit tests
+
+To run unit tests, execute the following command, you will need to have pytest installed and set environment
+variable `GITHUB_TOKEN` to a valid GitHub token that has permissions to create/delete and push to a repository
+within your account.
+
+```
+make test
+```
+
+The unit tests will create a test repository within your account for each unit test before testing functionality and deleting the repository.
+
 # python-semantic-release
 
 `gpush` generates commit messages that are compliant with [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/). See example in the [GitHub Repository](https://github.com/tjtharrison/gpush/blob/main/.github/workflows/semver.yaml)
