@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v3.0.0 (2023-04-19)
+### Feature
+* Wrote unit tests and added --message option for overrides ([`b046108`](https://github.com/tjtharrison/gpush/commit/b04610834e6c04c55b6607ade902096129741c82))
+
+### Fix
+* Renamed gpush to gpush.py and wrote some unit tests ([`eff2f89`](https://github.com/tjtharrison/gpush/commit/eff2f8988da3aa6c212065c36264b0ee9ebbcafc))
+
+### Breaking
+* Renamed gpush to gpush.py and wrote some unit tests ([`eff2f89`](https://github.com/tjtharrison/gpush/commit/eff2f8988da3aa6c212065c36264b0ee9ebbcafc))
+
 ## v2.1.1 (2023-04-12)
 ### Fix
 * Fixed no-commit,no-push ([`e42d17b`](https://github.com/tjtharrison/gpush/commit/e42d17b3a645d43a579c86049b6b31529385d90c))
