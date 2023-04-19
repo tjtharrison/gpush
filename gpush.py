@@ -134,11 +134,9 @@ def main():
     else:
         try:
             if args.no_commit:
-                print(args.message)
                 if str(args.message) != "None":
                     commit_message = args.message
                 else:
-                    print("Got here")
                     commit_message = collect_details()
                 git_commit(commit_message)
             if args.no_push:
