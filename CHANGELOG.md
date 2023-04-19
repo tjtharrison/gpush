@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v3.0.1 (2023-04-19)
+### Fix
+* Removed debug prints ([`9abbc9a`](https://github.com/tjtharrison/gpush/commit/9abbc9a59f21194232632b23228433892b0907d3))
+
 ## v3.0.0 (2023-04-19)
 ### Feature
 * Wrote unit tests and added --message option for overrides ([`b046108`](https://github.com/tjtharrison/gpush/commit/b04610834e6c04c55b6607ade902096129741c82))
