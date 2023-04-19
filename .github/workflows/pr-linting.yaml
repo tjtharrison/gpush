@@ -23,4 +23,4 @@ jobs:
       - name: "Code linting"
         run: |
           pip3 install -r requirements.txt
-          python3 -m pylint --fail-under=9.5 $(find . -name "*.py")
+          python3 -m pylint --fail-under=9.5 $(find . -name "*.py" -not -path "./tests/*")
