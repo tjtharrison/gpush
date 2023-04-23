@@ -42,7 +42,7 @@ parser.add_argument(
 parser.add_argument(
     "--branch",
     action="store",
-    default="None",
+    default="current",
     help="[Default: current] Override using the current branch and use the provided branch",
 )
 
@@ -87,7 +87,7 @@ def git_push():
     :return: True/False
     """
     try:
-        if str(args.branch) != "None":
+        if str(args.branch) != "current":
             branch_name = str(args.branch)
         else:
             repo = Repo(search_parent_directories=True)
