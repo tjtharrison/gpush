@@ -1,4 +1,8 @@
+"""
+Test the version of the package
+"""
 import gpush
+
 
 def test_get_version():
     """

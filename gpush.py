@@ -8,17 +8,16 @@ Usage: gpush.py
 """
 
 import argparse
-import sys
 
 import inquirer
 from git import Repo
 
 from _version import __version__
 
-version = __version__
+VERSION = __version__
 
 parser = argparse.ArgumentParser(
-    prog="gpush " + version,
+    prog="gpush " + VERSION,
     description="Git commit helper for conventional commit messages",
 )
 parser.add_argument(
@@ -56,7 +55,7 @@ def get_version():
 
     :return: String containing the current version of gpush.py
     """
-    return version
+    return VERSION
 
 
 def git_commit(commit_message):
@@ -162,6 +161,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """
-    Main function to execute the script"""
     main()
