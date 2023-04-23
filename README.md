@@ -1,6 +1,10 @@
 # gpush
 
-`gpush` is a command line utility for standardising commit messages using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). It is designed to be used in conjunction with [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/) to automate the release of your python package based on commits that are made on a branch.
+`gpush` is a command line utility for standardising commit messages using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). It is designed to be used in conjunction with [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/) to automate the release of your python package based on commits that are made on a branch when a PR is merged.
+
+## Signing commits
+
+`gpush` natively supports signing commits using GPG. To enable this, you will need to have GPG installed and configured on your machine. You can find instructions on how to do this [here](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification/generating-a-new-gpg-key).
 
 # Installation
 
@@ -14,6 +18,8 @@ pip3 install gpush
 
 When running gpush in a git directory, use `gpush` to replace your standard `git commit && git push` commands. `gpush` will ask a few questions to determine detail about your commit and generate a conventionally formatted git commit message.
 
+## Example
+
 !["gpush_demo"](docs/gpush_demo.gif)
 
 To see additional options available, run gpush with the  `--help` flag
@@ -24,7 +30,7 @@ gpush --help
 
 # Local development
 
-To develop locally, uninstall any existing version of gpush before executing the pip3 installation in the local directory, use Makefile command to do this
+To develop locally, uninstall any existing version of gpush before executing the pip3 installation in the local directory, use Makefile command to do this:
 
 ```
 make dev
