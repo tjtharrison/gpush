@@ -1,7 +1,11 @@
-import pytest
-import tests.bin.github as github
-from gpush import git_commit
+"""
+Unit tests for the git_commit function in gpush.py.
+"""
 import subprocess
+
+import pytest
+
+from tests.bin import github
 
 
 @pytest.fixture(autouse=True)
@@ -28,7 +32,10 @@ def test_git_commit_only():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
         print("Some error occurred while setting up the branch locally")
@@ -42,10 +49,18 @@ def test_git_commit_only():
             "git add test",
             "../gpush.py --message 'fix: test commit' --no-push",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Commit made successfully")
-        last_commit = subprocess.run("cd gpush-test; git log --pretty=oneline | head -n1", capture_output=True, shell=True)
-        last_commit_message = (str(last_commit.stdout))
+        last_commit = subprocess.run(
+            "cd gpush-test; git log --pretty=oneline | head -n1",
+            capture_output=True,
+            shell=True,
+            check=True,
+        )
+        last_commit_message = str(last_commit.stdout)
     except Exception as error_message:
         print("Some error occurred while committing to the branch locally")
         print(str(error_message))
@@ -57,4 +72,3 @@ def test_git_commit_only():
         print("Commit message not as expected")
         print("Last commit message: " + last_commit_message)
         assert False
-

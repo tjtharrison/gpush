@@ -1,7 +1,11 @@
-import pytest
-import tests.bin.github as github
-from gpush import git_commit
+"""
+Test file for gpush.py to test the git_push function.
+"""
 import subprocess
+
+import pytest
+
+from tests.bin import github
 
 
 @pytest.fixture(autouse=True)
@@ -28,7 +32,10 @@ def test_git_push_only():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
         print("Some error occurred while setting up the branch locally")
@@ -40,10 +47,13 @@ def test_git_push_only():
             "cd gpush-test",
             "touch test-push",
             "git add test-push",
-            "git commit -m \"Test manual commit\"",
+            'git commit -m "Test manual commit"',
             "../gpush.py --no-commit",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Code pushed successfully")
     except Exception as error_message:
         print("Some error occurred while committing to the branch locally")
@@ -67,7 +77,7 @@ def test_git_push_only():
 
 def test_git_push_only_custom_branch():
     """
-    Function to test the git_commit function in gpush.py with no-commit and specifying custom branch.
+    Function to test the git_commit function in gpush.py with no-commit and specifying custom branch
     :return:
     """
     try:
@@ -75,7 +85,10 @@ def test_git_push_only_custom_branch():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
         print("Some error occurred while setting up the branch locally")
@@ -87,10 +100,13 @@ def test_git_push_only_custom_branch():
             "cd gpush-test",
             "touch test-push",
             "git add test-push",
-            "git commit -m \"Test manual commit\"",
+            'git commit -m "Test manual commit"',
             "../gpush.py --no-commit --branch test-branch-2",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
+        print(ret.stdout)
         print("Code pushed successfully")
     except Exception as error_message:
         print("Some error occurred while committing to the branch locally")
