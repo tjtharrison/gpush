@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v3.1.0 (2023-04-23)
+### Feature
+* Added --branch flag to provide custom branch ([`f03986b`](https://github.com/tjtharrison/gpush/commit/f03986bb9ce3c8d933a183c13888924d6c8c4eff))
+
+### Fix
+* Corrected current branch selection ([`018fb07`](https://github.com/tjtharrison/gpush/commit/018fb073d57245543dae6f082a5a521063ca285d))
+
 ## v3.0.1 (2023-04-19)
 ### Fix
 * Removed debug prints ([`9abbc9a`](https://github.com/tjtharrison/gpush/commit/9abbc9a59f21194232632b23228433892b0907d3))
