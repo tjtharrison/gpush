@@ -56,17 +56,6 @@ def cleanup_local():
         print("The directory " + test_repo_name + " does not exist")
     return True
 
-def create_branch():
-    """Create a branch on a repo."""
-    print("Creating branch " + test_repo_name)
-    repo = api.repos.create_branch(
-        repo=test_repo_name,
-        owner=get_user().login,
-        branch="test-branch",
-    )
-    print("Cloned repo " + test_repo_name)
-    return repo
-
 # Use python git to clone repository
 def clone_repo():
     """Clone the repository."""

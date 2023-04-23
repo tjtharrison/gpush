@@ -18,7 +18,7 @@ def my_fixture():
     github.cleanup_local()
 
 
-def test_git_commit_only():
+def test_git_commit_and_push():
     """
     Function to test the git_commit function in gpush.py with no-push.
     :return:
@@ -40,7 +40,7 @@ def test_git_commit_only():
             "cd gpush-test",
             "touch test",
             "git add test",
-            "../gpush.py --message 'fix: test commit' --no-push",
+            "../gpush.py --message 'fix: test commit'",
         ]
         ret = subprocess.run(";".join(commands), capture_output=True, shell=True)
         print("Commit made successfully")
@@ -57,4 +57,3 @@ def test_git_commit_only():
         print("Commit message not as expected")
         print("Last commit message: " + last_commit_message)
         assert False
-
