@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v3.1.1 (2023-04-23)
+### Fix
+* Installing pylint in ci ([`0ff7db9`](https://github.com/tjtharrison/gpush/commit/0ff7db9eb8355be75f33accd40c4137533e2a256))
+
 ## v3.1.0 (2023-04-23)
 ### Feature
 * Added --branch flag to provide custom branch ([`f03986b`](https://github.com/tjtharrison/gpush/commit/f03986bb9ce3c8d933a183c13888924d6c8c4eff))
