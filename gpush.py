@@ -39,6 +39,13 @@ parser.add_argument(
     action="store",
     help="[Default: None] Override message prompt and use the provided message",
 )
+parser.add_argument(
+    "--branch",
+    action="store",
+    default="None",
+    help="[Default: current] Override using the current branch and use the provided branch",
+)
+
 
 args = parser.parse_args()
 
@@ -80,8 +87,14 @@ def git_push():
     :return: True/False
     """
     try:
+        if str(args.branch) != "None":
+            branch_name = str(args.branch)
+        else:
+            repo = Repo(search_parent_directories=True)
+            branch_name = repo.active_branch
         repo = Repo(search_parent_directories=True)
-        repo.git.push("--set-upstream", "origin", repo.active_branch)
+        repo.create_head(branch_name)
+        repo.git.push("--set-upstream", "origin", branch_name)
         print("Pushed successfully")
     except Exception as error_message:
         print("Some error occurred while pushing the code:")
