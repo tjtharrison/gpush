@@ -33,7 +33,9 @@ def test_git_commit_and_push():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
@@ -48,14 +50,16 @@ def test_git_commit_and_push():
             "git add test",
             "../gpush.py --message 'fix: test commit'",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Commit made successfully")
         last_commit = subprocess.run(
             "cd gpush-test; git log --pretty=oneline | head -n1",
             capture_output=True,
             shell=True,
-            check=True
+            check=True,
         )
         last_commit_message = str(last_commit.stdout)
     except Exception as error_message:

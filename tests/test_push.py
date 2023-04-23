@@ -32,7 +32,9 @@ def test_git_push_only():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
@@ -48,7 +50,9 @@ def test_git_push_only():
             'git commit -m "Test manual commit"',
             "../gpush.py --no-commit",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Code pushed successfully")
     except Exception as error_message:
@@ -81,7 +85,9 @@ def test_git_push_only_custom_branch():
             "cd gpush-test",
             "git checkout -b test-branch",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Branch setup locally")
     except Exception as error_message:
@@ -97,7 +103,9 @@ def test_git_push_only_custom_branch():
             'git commit -m "Test manual commit"',
             "../gpush.py --no-commit --branch test-branch-2",
         ]
-        ret = subprocess.run(";".join(commands), capture_output=True, shell=True, check=True)
+        ret = subprocess.run(
+            ";".join(commands), capture_output=True, shell=True, check=True
+        )
         print(ret.stdout)
         print("Code pushed successfully")
     except Exception as error_message:
