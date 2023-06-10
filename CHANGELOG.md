@@ -2,6 +2,20 @@
 
 <!--next-version-placeholder-->
 
+## v3.1.2 (2023-06-10)
+
+### Fix
+
+* Fixing up pylint ([`ece114a`](https://github.com/tjtharrison/gpush/commit/ece114af0725c1d6b66856d2c546682d2c4df1f5))
+* More CI fixing and docstring linting ([`41b5c9a`](https://github.com/tjtharrison/gpush/commit/41b5c9acadde5fd09a98004baca6b411eadde25b))
+* Fixing CI ([`158d630`](https://github.com/tjtharrison/gpush/commit/158d630ef9e6ba32128d3b501372e0f2ca0f1637))
+* Fixed linting and standardise docstrings ([`5bfa8af`](https://github.com/tjtharrison/gpush/commit/5bfa8afaa8af2dbcfa17bfb0ae31a1a8b647503a))
+
+### Documentation
+
+* Added reference to signed commits ([`b7ea878`](https://github.com/tjtharrison/gpush/commit/b7ea878832a68ec16d8c8d18af797fe1e05b67d3))
+* Improved documentation ([`32a4ee8`](https://github.com/tjtharrison/gpush/commit/32a4ee809d54050316c83722cb3bd6007958dc52))
+
 ## v3.1.1 (2023-04-23)
 ### Fix
 * Installing pylint in ci ([`0ff7db9`](https://github.com/tjtharrison/gpush/commit/0ff7db9eb8355be75f33accd40c4137533e2a256))
