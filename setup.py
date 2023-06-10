@@ -1,6 +1,4 @@
-"""
-Setup file for python-semantic-versioning
-"""
+"""Setup file for python-semantic-versioning."""
 from setuptools import setup
 
 from _version import __version__
