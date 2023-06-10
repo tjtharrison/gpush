@@ -9,6 +9,7 @@ Usage: gpush.py
 import argparse
 import logging
 import sys
+
 import inquirer
 from git import Repo, exc
 
