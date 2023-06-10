@@ -151,9 +151,7 @@ def collect_details():
                 message="What's your commit message",
             ),
         ]
-        answers = inquirer.prompt(
-            questions,
-            raise_keyboard_interrupt=True)
+        answers = inquirer.prompt(questions, raise_keyboard_interrupt=True)
     except KeyboardInterrupt as error_message:
         raise KeyboardInterrupt
 
