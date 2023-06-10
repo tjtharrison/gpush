@@ -1,4 +1,4 @@
-name: Semver Bump
+name: "Semver Bump"
 on:
   push:
     branches:
