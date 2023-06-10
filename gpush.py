@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Python script to handle git commit and push to standardise commit messages using conventional commit messages.
+Python script to handle git commit and push commit messages using conventional commit messages.
 
 Usage: gpush.py
 """
@@ -11,7 +11,8 @@ import logging
 import sys
 
 import inquirer
-from git import Repo, exc
+from git import Repo
+from git.exc import GitError
 
 from _version import __version__
 
@@ -73,7 +74,7 @@ def git_commit(commit_message):
         commit_message: String containing the conventional commit message formatted commit message
 
     Raises:
-        exc.GitError: If there is an issue with the call to git
+        GitError: If there is an issue with the call to git
 
     Returns:
         True if commit is successful
@@ -82,9 +83,9 @@ def git_commit(commit_message):
         repo = Repo(search_parent_directories=True)
         repo.index.write()
         repo.git.commit("-m" + commit_message)
-        logging.info("committing: " + commit_message)
+        logging.info("committing: %s", commit_message)
         logging.info("Committed successfully")
-    except exc.GitError as error_message:
+    except GitError as error_message:
         logging.info("Some error occured while committing the code:")
         logging.info(str(error_message))
         raise
@@ -113,14 +114,14 @@ def git_push():
         repo.create_head(branch_name)
         repo.git.push("--set-upstream", "origin", branch_name)
         logging.info("Pushed successfully")
-    except exc.GitError as error_message:
+    except GitError as error_message:
         logging.info("Some error occurred while pushing the code:")
         logging.info(str(error_message))
-        raise exc.GitError
+        raise GitError from error_message
     except Exception as error_message:
         logging.info("Some error occurred while pushing the code:")
         logging.info(str(error_message))
-        raise Exception
+        raise Exception from error_message
 
     return True
 
@@ -133,7 +134,7 @@ def collect_details():
         KeyboardInterrupt: If user exits the script
 
     Returns:
-        commit_message_final: String containing the conventional commit message formatted commit message
+        commit_message_final: String containing the conventional commit message.
     """
     try:
         questions = [
@@ -154,7 +155,7 @@ def collect_details():
         ]
         answers = inquirer.prompt(questions, raise_keyboard_interrupt=True)
     except KeyboardInterrupt as error_message:
-        raise KeyboardInterrupt
+        raise KeyboardInterrupt from error_message
 
     if answers["breaking_change"] == "Yes":
         is_breaking_change = "!"
@@ -191,7 +192,7 @@ def main():
             logging.info("Some error occurred while pushing the code:")
             logging.info(str(error_message))
             sys.exit(1)
-        except KeyboardInterrupt as error_message:
+        except KeyboardInterrupt:
             logging.info("Okay! Bye!")
             sys.exit(0)
     return True
