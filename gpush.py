@@ -141,7 +141,7 @@ def collect_details():
             inquirer.List(
                 "type",
                 message="What type of commit is this?",
-                choices=["fix", "feat", "docs", "ci"],
+                choices=["fix", "feat", "docs", "ci", "chore"],
             ),
             inquirer.List(
                 "breaking_change",
