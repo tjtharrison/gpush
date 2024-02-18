@@ -99,15 +99,18 @@ def print_pr_link(git_response):
         git_response: The response from the git_push function.
     """
     import re
+    import validators
+    # Explanation: git_response is expected to be a string containing the server's response to a git push command.
+    # This response may include a URL to create a new pull request (PR) if the push was successful.
     # Regex pattern to match PR links in git push response
     pr_link_pattern = r"https?://[\w./-]+/pull/\d+"
-    if not isinstance(git_response, str):
-        logging.info("Invalid git response format.")
+    if not isinstance(git_response, str) or not validators.url(git_response):
+        logging.info("Invalid or missing git response format.")
         return
     try:
         match = re.search(pr_link_pattern, git_response)
-    except Exception as e:
-        logging.info(f"Error parsing git response: {e}")
+    except re.error as regex_error:
+        logging.info(f"Error parsing git response with regex: {regex_error}")
         return
     if match:
         print("PR Link: ", match.group())
@@ -133,10 +136,17 @@ def git_push():
             repo = Repo(search_parent_directories=True)
             branch_name = repo.active_branch
         repo = Repo(search_parent_directories=True)
-        repo.create_head(branch_name)
+        if not repo.heads[branch_name].is_valid():
+            repo.create_head(branch_name)
+        else:
+            logging.info(f"Branch {branch_name} already exists.")
         push_response = repo.git.push("--set-upstream", "origin", branch_name)
         logging.info("Pushed successfully")
-        return push_response
+        if push_response:
+            return push_response
+        else:
+            logging.info("Push failed, no response received.")
+            return None
     except GitError as error_message:
         logging.info("Some error occurred while pushing the code:")
         logging.info(str(error_message))
@@ -211,7 +221,10 @@ def main():
                 git_commit(commit_message)
             if args.no_push:
                 git_response = git_push()
-                print_pr_link(git_response)
+                if git_response:
+                    print_pr_link(git_response)
+                else:
+                    logging.info("No response from git push, cannot print PR link.")
         except Exception as error_message:
             logging.info("Some error occurred while pushing the code:")
             logging.info(str(error_message))
