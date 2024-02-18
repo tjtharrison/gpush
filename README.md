@@ -9,8 +9,29 @@
 # Installation
 
 This package is available for installation via pypi using pip3:
+# PR Link Printer Feature
 
-```
+`gpush` now includes a PR Link Printer feature designed to streamline your workflow by automatically detecting and printing a link to create a new Pull Request (PR) directly from your terminal. This feature activates when you push your commits using `gpush`. It reads the response from the `git_push()` function, and if the response includes a link to create a new PR on the repository, it prints that link to stdout.
+
+This allows you to immediately click on the link to create a PR without having to navigate through the GitHub/GitLab/Bitbucket UI to do so. This is especially useful for developers looking to save time and streamline their commit and push workflow.
+
+## How to Use
+
+1. Ensure you have the latest version of `gpush` installed.
+2. Perform your commit and push as usual with `gpush`.
+3. If your push action generates a new PR link, `gpush` will print this link to stdout, allowing you to immediately access the PR creation page. This output ensures you're informed of the next steps directly in your command line interface.
+4. Click on the link to navigate directly to the PR creation page on your repository's hosting service.
+
+This feature supports GitHub, GitLab, and Bitbucket, making it versatile for various development workflows.
+
+## Troubleshooting
+
+If you do not see a PR link after pushing your changes with `gpush`, here are a few things to check:
+
+- Ensure you are using the latest version of `gpush`. Older versions may not include the PR Link Printer feature.
+- Check your network connection. A poor connection can interrupt the communication with the git server and prevent the PR link from being retrieved.
+- Verify that your repository's hosting service (GitHub, GitLab, Bitbucket) supports automatic PR link generation. Some services or specific repository configurations may not support this feature.
+- If you're still facing issues, please refer to the `gpush` documentation or reach out to the support team for further assistance.
 pip3 install gpush
 ```
 
