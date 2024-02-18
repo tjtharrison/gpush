@@ -89,8 +89,30 @@ def git_commit(commit_message):
         logging.info("Some error occured while committing the code:")
         logging.info(str(error_message))
         raise
-
     return True
+
+def print_pr_link(git_response):
+    """
+    Prints the PR link from the git push response to stdout.
+
+    Args:
+        git_response: The response from the git_push function.
+    """
+    import re
+    # Regex pattern to match PR links in git push response
+    pr_link_pattern = r"https?://[\w./-]+/pull/\d+"
+    if not isinstance(git_response, str):
+        logging.info("Invalid git response format.")
+        return
+    try:
+        match = re.search(pr_link_pattern, git_response)
+    except Exception as e:
+        logging.info(f"Error parsing git response: {e}")
+        return
+    if match:
+        print("PR Link: ", match.group())
+    else:
+        logging.info("No PR link found in the git push response.")
 
 
 def git_push():
@@ -112,8 +134,9 @@ def git_push():
             branch_name = repo.active_branch
         repo = Repo(search_parent_directories=True)
         repo.create_head(branch_name)
-        repo.git.push("--set-upstream", "origin", branch_name)
+        push_response = repo.git.push("--set-upstream", "origin", branch_name)
         logging.info("Pushed successfully")
+        return push_response
     except GitError as error_message:
         logging.info("Some error occurred while pushing the code:")
         logging.info(str(error_message))
@@ -187,7 +210,8 @@ def main():
                     commit_message = collect_details()
                 git_commit(commit_message)
             if args.no_push:
-                git_push()
+                git_response = git_push()
+                print_pr_link(git_response)
         except Exception as error_message:
             logging.info("Some error occurred while pushing the code:")
             logging.info(str(error_message))
