@@ -27,8 +27,8 @@ jobs:
         env: 
           NEW_VERSION: ${{ steps.release.outputs.NEW_RELEASE }}
         run: |
-          echo $NEW_VERSION
-          sed -i 's/\.*\/'$NEW_VERSION'/g' _version.py
+          echo "$NEW_VERSION"
+          sed -i 's/\".*\"/'"$NEW_VERSION"'/g' _version.py
       - name: Commit version file
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
