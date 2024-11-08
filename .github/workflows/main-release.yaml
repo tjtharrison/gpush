@@ -1,0 +1,36 @@
+name: Semver Bump
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-semver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Release with semantic-release
+        uses: tjtharrison/github-actions-releaser@v1
+        id: release
+        with:
+          PROJECT_NAME: gpush
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update version file
+        env: 
+          NEW_VERSION: ${{ steps.release.outputs.NEW_RELEASE }}
+        run: |
+          echo $NEW_VERSION
+          sed -i 's/\.*\/'$NEW_VERSION'/g' _version.py
+      - name: Commit version file
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: chore: bump version to ${{ steps.release.outputs.NEW_RELEASE }} [skip ci]
+          file_pattern: _version.py
