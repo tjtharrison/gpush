@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Release with semantic-release
@@ -32,5 +32,5 @@ jobs:
       - name: Commit version file
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: chore: bump version to ${{ steps.release.outputs.NEW_RELEASE }} [skip ci]
+          commit_message: chore: "bump version to ${{ steps.release.outputs.NEW_RELEASE }} [skip ci]"
           file_pattern: _version.py
