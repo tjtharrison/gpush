@@ -30,7 +30,7 @@ jobs:
           echo "$NEW_VERSION"
           sed -i 's/\".*\"/'\"$NEW_VERSION\"'/g' _version.py
       - name: Commit version file
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "chore: bump version to ${{ steps.release.outputs.NEW_RELEASE }} [skip ci]"
           file_pattern: _version.py
